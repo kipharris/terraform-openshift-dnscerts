@@ -72,7 +72,7 @@ resource "null_resource" "write_letsencrypt_router_certs" {
 
   connection {
     host          = "${var.bastion_public_ip}"
-    user          = "root"
+    user          = "${var.ssh_username}"
     private_key   = "${file(var.bastion_ssh_key_file)}"
   }
 
@@ -99,7 +99,7 @@ resource "null_resource" "write_letsencrypt_router_ca_certs" {
 
   connection {
     host          = "${var.bastion_public_ip}"
-    user          = "root"
+    user          = "${var.ssh_username}"
     private_key   = "${file(var.bastion_ssh_key_file)}"
   }
 
