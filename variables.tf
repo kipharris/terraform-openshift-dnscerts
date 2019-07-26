@@ -13,10 +13,6 @@ variable "app_cname" {}
 
 variable "cloudflare_zone" {}
 
-variable "master_count" {}
-variable "infra_count" {}
-variable "app_count" {}
-variable "storage_count" {}
 variable "bastion_public_ip" {}
 variable "master_hostname" { type="list" }
 variable "app_hostname" { type="list" }
