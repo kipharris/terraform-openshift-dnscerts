@@ -46,3 +46,6 @@ variable "cluster_cname" {
 
 
 variable "bastion_ssh_key_file" {}
+variable "ssh_username" {
+    default = "root"
+}
