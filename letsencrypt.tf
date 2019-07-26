@@ -54,14 +54,14 @@ resource "null_resource" "write_letsencrypt_master_certs" {
     content = <<EOF
 ${acme_certificate.master_certificate.certificate_pem}${acme_certificate.master_certificate.issuer_pem}
 EOF
-    destination = "/root/master.crt"
+    destination = "~/master.crt"
   }
 
   provisioner "file" {
     content = <<EOF
 ${acme_certificate.master_certificate.private_key_pem}
 EOF
-    destination = "/root/master.key"
+    destination = "~/master.key"
   }
 }
 
@@ -80,14 +80,14 @@ resource "null_resource" "write_letsencrypt_router_certs" {
     content = <<EOF
 ${acme_certificate.app_subdomain_certificate.certificate_pem}${acme_certificate.app_subdomain_certificate.issuer_pem}
 EOF
-    destination = "/root/router.crt"
+    destination = "~/router.crt"
   }
 
   provisioner "file" {
     content = <<EOF
 ${acme_certificate.app_subdomain_certificate.private_key_pem}
 EOF
-    destination = "/root/router.key"
+    destination = "~/router.key"
   }
 }
 
@@ -106,7 +106,7 @@ resource "null_resource" "write_letsencrypt_router_ca_certs" {
   provisioner "remote-exec" {
     inline = [
       <<EOF
-curl -o /root/router_ca.crt https://letsencrypt.org/certs/lets-encrypt-x3-cross-signed.pem.txt
+curl -o ~/router_ca.crt https://letsencrypt.org/certs/lets-encrypt-x3-cross-signed.pem.txt
 EOF
     ]
   }
