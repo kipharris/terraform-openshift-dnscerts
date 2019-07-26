@@ -21,6 +21,14 @@ resource "cloudflare_record" "app_cname" {
   depends_on = ["acme_certificate.app_subdomain_certificate"]
 }
 
+resource "cloudflare_record" "bastion_dns_a" {
+  domain = "${var.cloudflare_zone}"
+  name = "${element(var.bastion_hostname, count.index)}"
+  value = "${element(var.bastion_public_ip, count.index)}"
+  type = "A"
+  ttl = 1
+}
+
 resource "cloudflare_record" "master_dns_a" {
   count = "${length(var.master_private_ip)}"
   domain = "${var.cloudflare_zone}"
