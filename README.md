@@ -13,10 +13,6 @@ module "cloudflare" {
     public_app_vip        = "${module.infrastructure.public_app_vip}"
     master_cname          = "${var.master_cname}-${random_id.tag.hex}"
     app_cname             = "${var.app_cname}-${random_id.tag.hex}"
-    master_count          = "${var.master_count}"
-    app_count             = "${var.app_count}"
-    infra_count           = "${var.infra_count}"
-    storage_count         = "${var.storage_count}"
     master_hostname       = "${module.infrastructure.master_hostname}"
     app_hostname          = "${module.infrastructure.app_hostname}"
     infra_hostname        = "${module.infrastructure.infra_hostname}"
@@ -38,10 +34,6 @@ module "cloudflare" {
 |public_master_vip|Master Loadbalancer VIP ex:`ncolon-ocp-master-76fbf24d-625675-wdc04.clb.appdomain.cloud`|-|string|
 |public_app_vip|App Loadbalancer VIP ex:`ncolon-ocp-app-76fbf24d-625675-wdc04.clb.appdomain.cloud`|-|string|
 |master_cname|CNAME to be used for your custom domain. Ex: `ocp-ncolon-xxxxx`|-|string|
-|master_count|Number of Master Nodes|-|int|
-|app_count|Number of App Nodes|-|int|
-|infra_count|Number of Infra Nodes|-|int|
-|storage_count|Number of Storage Nodes|-|int|
 |master_hostname|Hostnames of Master Nodes|-|list|
 |app_hostname||Hostnames of App Nodes|-|list|
 |infra_hostname||Hostnames of Infra Nodes|-|list|
