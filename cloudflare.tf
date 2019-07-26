@@ -22,7 +22,7 @@ resource "cloudflare_record" "app_cname" {
 }
 
 resource "cloudflare_record" "master_dns_a" {
-  count = "${var.master_count}"
+  count = "${length(var.master_private_ip)}"
   domain = "${var.cloudflare_zone}"
   name = "${element(var.master_hostname, count.index)}"
   value = "${element(var.master_private_ip, count.index)}"
@@ -31,7 +31,7 @@ resource "cloudflare_record" "master_dns_a" {
 }
 
 resource "cloudflare_record" "infra_dns_a" {
-  count = "${var.infra_count}"
+  count = "${length(var.infra_private_ip)}"
   domain = "${var.cloudflare_zone}"
   name = "${element(var.infra_hostname, count.index)}"
   value = "${element(var.infra_private_ip, count.index)}"
@@ -40,7 +40,7 @@ resource "cloudflare_record" "infra_dns_a" {
 }
 
 resource "cloudflare_record" "worker_dns_a" {
-  count = "${var.app_count}"
+  count = "${length(var.app_private_ip)}"
   domain = "${var.cloudflare_zone}"
   name = "${element(var.app_hostname, count.index)}"
   value = "${element(var.app_private_ip, count.index)}"
@@ -49,7 +49,7 @@ resource "cloudflare_record" "worker_dns_a" {
 }
 
 resource "cloudflare_record" "gluster_dns_a" {
-  count = "${var.storage_count}"
+  count = "${length(var.storage_private_ip)}"
   domain = "${var.cloudflare_zone}"
   name = "${element(var.storage_hostname, count.index)}"
   value = "${element(var.storage_private_ip, count.index)}"
