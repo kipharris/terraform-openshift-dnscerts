@@ -23,8 +23,8 @@ resource "cloudflare_record" "app_cname" {
 
 resource "cloudflare_record" "bastion_dns_a" {
   domain = "${var.cloudflare_zone}"
-  name = "${element(var.bastion_hostname, count.index)}"
-  value = "${element(var.bastion_public_ip, count.index)}"
+  name = "${var.bastion_hostname}"
+  value = "${var.bastion_public_ip}"
   type = "A"
   ttl = 1
 }

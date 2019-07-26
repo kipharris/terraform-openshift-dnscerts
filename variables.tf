@@ -14,6 +14,7 @@ variable "app_cname" {}
 variable "cloudflare_zone" {}
 
 variable "bastion_public_ip" {}
+variable "bastion_hostname" {}
 variable "master_hostname" { type="list" }
 variable "app_hostname" { type="list" }
 variable "infra_hostname" { type="list" }
