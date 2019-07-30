@@ -11,9 +11,16 @@ resource "random_id" "completed" {
         "cloudflare_record.infra_dns_a",
         "cloudflare_record.worker_dns_a",
         "cloudflare_record.gluster_dns_a"
+        "null_resource.dependency"
     ]
 }
 
 output "completed" {
     value = "${random_id.completed.hex}"
+}
+
+resource "null_resource" "dependency" {
+  triggers = {
+    all_dependencies = "${join(",", var.dependencies)}"
+  }
 }
