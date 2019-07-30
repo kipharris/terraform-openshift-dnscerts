@@ -1,6 +1,6 @@
 resource "random_id" "completed" {
     byte_length = 1
-    depends_on [
+    depends_on = [
         "null_resource.write_letsencrypt_master_certs",
         "null_resource.write_letsencrypt_router_certs",
         "null_resource.write_letsencrypt_router_certs",
