@@ -63,6 +63,9 @@ ${acme_certificate.master_certificate.private_key_pem}
 EOF
     destination = "~/master.key"
   }
+  depends_on = [
+      "null_resource.dependency"
+  ]
 }
 
 resource "null_resource" "write_letsencrypt_router_certs" {
@@ -89,6 +92,9 @@ ${acme_certificate.app_subdomain_certificate.private_key_pem}
 EOF
     destination = "~/router.key"
   }
+  depends_on = [
+      "null_resource.dependency"
+  ]
 }
 
 # write out the letsencrypt CA
@@ -110,4 +116,9 @@ curl -o ~/router_ca.crt https://letsencrypt.org/certs/lets-encrypt-x3-cross-sign
 EOF
     ]
   }
+
+  depends_on = [
+      "null_resource.dependency"
+  ]
+
 }

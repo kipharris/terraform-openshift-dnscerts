@@ -9,7 +9,10 @@ resource "cloudflare_record" "master_cname" {
   value = "${var.public_master_vip}"
   type = "CNAME"
   ttl = 1
-  depends_on = ["acme_certificate.master_certificate"]
+  depends_on = [
+      "acme_certificate.master_certificate",
+      "null_resource.dependency"
+  ]
 }
 
 resource "cloudflare_record" "app_cname" {
@@ -18,7 +21,10 @@ resource "cloudflare_record" "app_cname" {
   value = "${var.public_app_vip}"
   type = "CNAME"
   ttl = 1
-  depends_on = ["acme_certificate.app_subdomain_certificate"]
+  depends_on = [
+      "acme_certificate.app_subdomain_certificate",
+      "null_resource.dependency"
+  ]
 }
 
 resource "cloudflare_record" "bastion_dns_a" {
