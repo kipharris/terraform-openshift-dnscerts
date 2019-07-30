@@ -57,7 +57,7 @@ resource "cloudflare_record" "worker_dns_a" {
 }
 
 resource "cloudflare_record" "gluster_dns_a" {
-  count = "${var.storage["count"]}"
+  count = "${var.storage["nodes"]}"
   domain = "${var.cloudflare_zone}"
   name = "${element(var.storage_hostname, count.index)}"
   value = "${element(var.storage_private_ip, count.index)}"
