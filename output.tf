@@ -10,7 +10,8 @@ resource "random_id" "completed" {
         "cloudflare_record.master_dns_a",
         "cloudflare_record.infra_dns_a",
         "cloudflare_record.worker_dns_a",
-        "cloudflare_record.gluster_dns_a",
+        "cloudflare_record.gluster_dns_a"
+    ]
 }
 
 output "completed" {
