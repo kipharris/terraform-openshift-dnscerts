@@ -30,7 +30,7 @@ resource "cloudflare_record" "bastion_dns_a" {
 }
 
 resource "cloudflare_record" "master_dns_a" {
-  count = "${var.master["nodes"])}"
+  count = "${var.master["nodes"]}"
   domain = "${var.cloudflare_zone}"
   name = "${element(var.master_hostname, count.index)}"
   value = "${element(var.master_private_ip, count.index)}"
@@ -39,7 +39,7 @@ resource "cloudflare_record" "master_dns_a" {
 }
 
 resource "cloudflare_record" "infra_dns_a" {
-  count = "${var.infra["nodes"])}"
+  count = "${var.infra["nodes"]}"
   domain = "${var.cloudflare_zone}"
   name = "${element(var.infra_hostname, count.index)}"
   value = "${element(var.infra_private_ip, count.index)}"
@@ -48,7 +48,7 @@ resource "cloudflare_record" "infra_dns_a" {
 }
 
 resource "cloudflare_record" "worker_dns_a" {
-  count = "${var.worker["nodes"])}"
+  count = "${var.worker["nodes"]}"
   domain = "${var.cloudflare_zone}"
   name = "${element(var.app_hostname, count.index)}"
   value = "${element(var.app_private_ip, count.index)}"
