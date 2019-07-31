@@ -64,3 +64,12 @@ resource "cloudflare_record" "gluster_dns_a" {
   type = "A"
   ttl = 1
 }
+
+resource "cloudflare_record" "haproxy_dns_a" {
+  count = "${var.haproxy["nodes"]}"
+  domain = "${var.cloudflare_zone}"
+  name = "${element(var.haproxy_hostname, count.index)}"
+  value = "${element(var.haproxy_private_ip, count.index)}"
+  type = "A"
+  ttl = 1
+}
