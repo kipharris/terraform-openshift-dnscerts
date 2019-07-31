@@ -13,18 +13,18 @@ variable "app_cname" {}
 
 variable "cloudflare_zone" {}
 
-variable "bastion_public_ip" {}
-variable "bastion_hostname" {}
-variable "master_hostname" { type="list" }
-variable "app_hostname" { type="list" }
-variable "infra_hostname" { type="list" }
-variable "storage_hostname" { type="list" }
-variable "haproxy_hostname" { type="list" }
-variable "master_private_ip" { type="list" }
-variable "app_private_ip" { type="list" }
-variable "infra_private_ip" { type="list" }
+variable "bastion_public_ip"  {}
+variable "bastion_hostname"   {}
+variable "master_hostname"    { type="list" }
+variable "app_hostname"       { type="list" }
+variable "infra_hostname"     { type="list" }
+variable "storage_hostname"   { type="list" }
+variable "haproxy_hostname"   { type="list" }
+variable "master_private_ip"  { type="list" }
+variable "app_private_ip"     { type="list" }
+variable "infra_private_ip"   { type="list" }
 variable "storage_private_ip" { type="list" }
-variable "haproxy_public_ip" { type="list" }
+variable "haproxy_public_ip"  { type="list" }
 
 variable "letsencrypt_email" {
   description = "email address used to register with letsencrypt"
