@@ -1,6 +1,7 @@
 provider "cloudflare" {
-    email = "${var.cloudflare_email}"
-    token = "${var.cloudflare_token}"
+  version = "~> 1.0"
+  email = "${var.cloudflare_email}"
+  token = "${var.cloudflare_token}"
 }
 
 resource "cloudflare_record" "master_cname" {
